@@ -17,6 +17,10 @@ flatpak install flathub com.discordapp.Discord
 flatpak install flathub com.brave.Browser
 flatpak install flathub org.onlyoffice.desktopeditors
 
+# Fonts
+echo "Installing Jetbrains Mono"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+
 ####################
 ## DOCKER INSTALL ##
 ####################
