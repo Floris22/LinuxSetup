@@ -1,0 +1,34 @@
+add_newline = true
+
+format = """
+ $directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$python\
+$cmd_duration
+$character"""
+
+[character]
+success_symbol = '[➜](bold red)'
+format = ' $symbol '
+error_symbol = '[✗](bold red) '
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+pyenv_version_name = false
+symbol = '' 
+
+[docker_context]
+format = '[🐋 $context](blue bold)'
+detect_files = ['compose.yml', 'compose.yaml', 'Dockerfile']
+
+[cmd_duration]
+format = '[$duration]($style) '
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style) '
