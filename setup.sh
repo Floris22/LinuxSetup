@@ -37,7 +37,7 @@ echo \
 sudo apt update
 
 # Install docker
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 echo "Checking docker version"
 docker --version
