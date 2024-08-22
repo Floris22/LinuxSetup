@@ -3,11 +3,52 @@
 # First update and upgrade
 sudo apt update && sudo apt upgrade -y
 
-# Installing some packages
+#########################
+## SIMPLE APT INSTALLS ##
+#########################
 echo "Installing zsh, git, python, vlc and flatpak"
 sudo apt install -y zsh git python3 python3-pip python3-venv vlc flatpak
 
-# Flatpak setup
+####################
+## CURSOR INSTALL ##
+####################
+# make appimage dir
+mkdir ~/AppImages
+
+# Go to website and manually download AppImage
+echo "Please download the required package manually from the website."
+read -p "Press [Enter] once you have downloaded the package and it's ready to install..."
+
+# Check if the package is downloaded
+while [ ! -f ~/Downloads/*.AppImage ]; do
+    echo "The package was not found. Please ensure it's downloaded to ~/Downloads"
+    read -p "Press [Enter] once you have downloaded the package..."
+done
+
+mv ~/Downloads/*.AppImage ~/AppImages/cursor.AppImage
+
+# Define the path to the .desktop file
+desktop_file="$HOME/.local/share/applications/cursor.desktop"
+
+# Create the .desktop file with the required content
+cat > "$desktop_file" <<EOL
+[Desktop Entry]
+Name=Cursor
+Exec=/home/flo/AppImages/cursor/cursor.AppImage
+Icon=/home/flo/AppImages/cursor/cursor_icon.png
+Type=Application
+Categories=Utility;
+EOL
+
+# Make the .desktop file executable
+chmod +x "$desktop_file"
+
+# Notify the user
+echo -e "cursor.desktop has been created at $desktop_file\nMake sure to add a favicon called cursor_icon.png"
+
+#####################
+## FLATPAK INSTALL ##
+#####################
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Installing flatpaks
@@ -17,14 +58,15 @@ flatpak install flathub com.discordapp.Discord
 flatpak install flathub com.brave.Browser
 flatpak install flathub org.onlyoffice.desktopeditors
 
-# Fonts
+###########
+## FONTS ##
+###########
 echo "Installing Jetbrains Mono"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
 ####################
 ## DOCKER INSTALL ##
 ####################
-
 echo "Installing docker"
 # Add Docker's official GPG key:
 sudo apt update
