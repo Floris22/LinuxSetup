@@ -3,11 +3,14 @@
 # First update and upgrade
 sudo apt update && sudo apt upgrade -y
 
+# Install nala for faster and better downloads
+sudo apt install nala
+
 #########################
 ## SIMPLE APT INSTALLS ##
 #########################
 echo "Installing zsh, git, python, vlc and flatpak"
-sudo apt install -y zsh git python3 python3-pip python3-venv vlc flatpak
+sudo nala install -y zsh git python3 python3-pip python3-venv vlc flatpak
 
 ####################
 ## CURSOR INSTALL ##
@@ -69,8 +72,8 @@ echo "Installing Jetbrains Mono"
 ####################
 echo "Installing docker"
 # Add Docker's official GPG key:
-sudo apt update
-sudo apt install -y ca-certificates curl
+sudo nala update
+sudo nala install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -83,7 +86,7 @@ echo \
 sudo apt update
 
 # Install docker
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo nala install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 echo "Checking docker version"
 docker --version
@@ -158,11 +161,11 @@ echo "sudo systemctl restart battery-charge-threshold.service"
 
 # Update package lists and upgrade existing packages
 echo "Updating package lists and upgrading existing packages..."
-sudo apt update && sudo apt upgrade -y
+sudo nala update && sudo apt upgrade -y
 
 # Install KVM and related packages
 echo "Installing KVM and related packages..."
-sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+sudo nala install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
 # Verify KVM installation
 echo "Verifying KVM installation..."
@@ -175,7 +178,7 @@ sudo usermod -aG kvm $USER
 
 # Install Virtual Machine Manager
 echo "Installing Virtual Machine Manager..."
-sudo apt install -y virt-manager
+sudo nala install -y virt-manager
 
 # Enable and start the libvirtd service
 echo "Enabling and starting the libvirtd service..."
