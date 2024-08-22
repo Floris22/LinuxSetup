@@ -4,7 +4,7 @@
 sudo apt update && sudo apt upgrade -y
 
 # Install nala for faster and better downloads
-sudo apt install nala
+sudo apt install -y nala
 
 #########################
 ## SIMPLE APT INSTALLS ##
