@@ -23,10 +23,6 @@ echo "Packages downloaded\n\n"
 echo "Adding user permissions for docker and vir-manager"
 sudo usermod -aG docker $USER
 sudo usermod -aG libvirt $USER
-
-newgrp docker
-newgrp libvirt
-
 echo "Permissions set"
 
 ##############################
