@@ -6,19 +6,15 @@ sudo pacman -Syy --noconfirm
 sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 
-# Clean up unused packages and cache
-echo "Cleaning up..."
-sudo pacman -Rns $(pacman -Qdtq) --noconfirm
-sudo pacman -Sc --noconfirm
-
 echo "System is up to date!"
 
 #####################
 # Download packages #
 #####################
 echo "Downloading packages..."
-sudo pacman -S vim python-virtualenv zsh unzip curl fuse2 wget vlc ufw obsidian htop fastfetch discord android-tools libreoffice-fresh docker docker-compose docker-buildx qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode ebtables iptables libguestfs --noconfirm
-
+sudo pacman -S vim python-virtualenv zsh unzip curl fuse2 wget vlc ufw obsidian htop fastfetch discord android-tools libreoffice-fresh docker docker-compose docker-buildx --noconfirm
+# with confirm because certain choices have to be made
+sudo pacman -S qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode libguestfs
 echo "Packages downloaded\n\n"
 
 ###########################################
