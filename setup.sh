@@ -14,7 +14,7 @@ echo "System is up to date!"
 echo "Downloading packages..."
 sudo pacman -S vim python-virtualenv zsh unzip curl fuse2 wget vlc ufw obsidian htop fastfetch discord android-tools libreoffice-fresh docker docker-compose docker-buildx --noconfirm
 # with confirm because certain choices have to be made
-sudo pacman -S qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode libguestfs
+sudo pacman -S qemu virt-manager virt-viewer dnsmasq bridge-utils dmidecode
 echo "Packages downloaded\n\n"
 
 ###########################################
