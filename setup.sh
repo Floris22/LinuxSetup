@@ -67,10 +67,11 @@ CURSOR_DESKTOP_FILE="$HOME/.local/share/applications/cursor.desktop"
 cat > "$CURSOR_DESKTOP_FILE" <<EOL
 [Desktop Entry]
 Name=Cursor
+Comment=VSCode AI editor
 Exec=/home/flo/AppImages/cursor/cursor.AppImage
 Icon=/home/flo/AppImages/cursor/cursor_icon.jpg
 Type=Application
-Categories=Utility;
+Categories=Development;
 EOL
 
 chmod +x "$CURSOR_DESKTOP_FILE"
