@@ -3,7 +3,7 @@
 # Update package database and upgrade system
 echo "Updating and upgrading the system..."
 sudo pacman -Syy --noconfirm
-suod pacman -S archlinux-keyring --noconfirm
+sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 
 # Clean up unused packages and cache
@@ -17,9 +17,9 @@ echo "System is up to date!"
 # Download packages #
 #####################
 echo "Downloading packages..."
-sudo pacman -S vim zsh unzip curl fuse2 wget vlc ufw obsidian htop fastfetch discord android-tools libreoffice-fresh docker docker-compose docker-buildx qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode ebtables iptables libguestfs --noconfirm
+sudo pacman -S vim python-virtualenv zsh unzip curl fuse2 wget vlc ufw obsidian htop fastfetch discord android-tools libreoffice-fresh docker docker-compose docker-buildx qemu virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode ebtables iptables libguestfs --noconfirm
 
-echo "Packages downloaded"
+echo "Packages downloaded\n\n"
 
 ###########################################
 # Give permissions for docker and libvirt #
@@ -36,37 +36,38 @@ echo "Permissions set"
 ##############################
 # Downloading Jetbrains mono #
 ##############################
-echo "Downloading jetbrains mono font"
+echo "\n\nDownloading jetbrains mono font\n"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-echo "Jetbrains mono setup complete"
+echo "Jetbrains mono setup complete\n\n"
 
 #############################################
 # Setting up terminal with starship and zsh #
 #############################################
-echo "Setting up terminal"
-echo "Downloading starship"
+echo "Setting up terminal\n\n"
+echo "Downloading starship\n"
 sudo curl -sS https://starship.rs/install.sh | sh
 
-echo "Starship downloaded, moving files from github to the right directories..."
+echo "Starship downloaded, moving files from github to the right directories...\n"
 mv ~/LinuxSetup/.zshrc ..
 mv ~/LinuxSetup/starship.toml ~/.config/
 
-echo "Installing autosuggestions for zsh"
+echo "Installing autosuggestions for zsh\n"
 mkdir ~/.config/.zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/.zsh/zsh-autosuggestions
 
-echo "Setting zsh as default"
+echo "Setting zsh as default\n"
 chsh
 
 ################
 # Setup cursor #
 ################
-echo "Setting up cursor"
+echo "\n\nSetting up cursor\n\n"
 
-mkdir ~/AppImages
-mkdir ~/.local/share/applications
+mkdir -p ~/AppImages/cursor
+mkdir -p ~/.local/share/applications
 
-mv ~/Downloads/*.AppImage ~/AppImages/cursor/cursor.AppImage
+mv ~/Downloads/*.AppImage ~/Downloads/cursor.AppImage 
+mv ~/Downloads/cursor.AppImage ~/AppImages/cursor/
 mv ~/LinuxSetup/cursor_icon.jpg ~/AppImages/cursor/
 
 CURSOR_DESKTOP_FILE="$HOME/.local/share/applications/cursor.desktop"
