@@ -12,3 +12,5 @@
   - unix_sock_group = "libvirt"
   - unix_sock_rw_perms = "0770"
 3. You might have to add your user to the libvirt group again (sudo usermod -aG libvirt $USER)
+
+For cursor to work / show up in your application launcher, you might have to execute the appimage manually first.
