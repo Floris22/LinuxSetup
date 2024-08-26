@@ -74,6 +74,7 @@ Categories=Utility;
 EOL
 
 chmod +x "$CURSOR_DESKTOP_FILE"
+chmod +x ~/AppImages/cursor/cursor.AppImage
 echo "Cursor setup complete"
 
 ##########################################################################
