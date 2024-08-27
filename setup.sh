@@ -123,7 +123,12 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 
 deactivate
+
+chmod +x ~/AppImages/ytd/yt.sh
+
 echo "Ytd setup complete"
+echo
+echo
 
 ##########################################################################
 # Set battery threshold service so that battery is only charged till 60% #
