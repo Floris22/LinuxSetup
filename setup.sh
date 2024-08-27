@@ -129,3 +129,22 @@ echo "Battery status: $BATTERY_STATUS"
 echo "To apply changes to the threshold, edit the service file at $SERVICE_FILE and restart the service with:"
 echo "sudo systemctl daemon-reload"
 echo "sudo systemctl restart battery-charge-threshold.service"
+
+#############
+# YTD Setup #
+#############
+echo "Setting up ytd"
+
+mkdir -p ~/AppImages/ytd
+mv ./ytd/* ~/AppImages/ytd
+cd ~/AppImages/ytd
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+pip3 install -r requirements.txt
+
+deactivate
+echo "Ytd setup complete"
+
+
