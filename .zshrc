@@ -88,7 +88,7 @@ cursor() {
 
 # Aliases
 alias ls='ls --color'
-alias ytd=~/Projects/YTDownload/yt.sh
+alias ytd=~/AppImages/ytd/yt.sh
 
 # Exports
 
