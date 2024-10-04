@@ -15,7 +15,7 @@ sudo apt upgrade -y
 # Install necessary dependencies
 echo_custom "Installing necessary dependencies"
 sudo apt install -y nala
-sudo nala install -y python3-venv unzip curl fuse2 wget vlc ufw htop fastfetch
+sudo nala install -y python3-venv ffmpeg unzip curl fuse2 wget vlc ufw htop fastfetch
 
 #########################################################
 ## Install virtual machine manager
