@@ -110,8 +110,9 @@ alias ls='ls --color'
 alias ytd=~/AppImages/ytd/yt.sh
 
 # Exports
-echo 'eval "$(starship init bash)"' >> ~/.bashrc
 EOL
+
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # Reload .bashrc
 source ~/.bashrc
@@ -143,6 +144,7 @@ if [ -z "ytd/.venv" ]; then
     pip install -r ytd/requirements.txt
 fi
 
+mv ytd $HOME/Applications 
 echo_custom "Done setting up ytd"
 
 #########################################################
