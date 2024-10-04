@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Echo function
-echo_custom(s) {
+echo_custom() {
     echo "============================================"
-    echo $s
+    echo $1
     echo "============================================"
 }
 
@@ -15,7 +15,7 @@ sudo apt upgrade -y
 # Install necessary dependencies
 echo_custom "Installing necessary dependencies"
 sudo apt install -y nala
-sudo nala install -y python3-venv ffmpeg unzip curl fuse2 wget vlc ufw htop fastfetch
+sudo nala install -y python3-venv ffmpeg unzip curl wget vlc ufw htop neofetch
 
 #########################################################
 ## Install virtual machine manager
@@ -32,15 +32,27 @@ sudo usermod -aG libvirt $USER
 
 echo_custom "Installing docker"
 # Add Docker's official GPG key:
+DISTRO=$(source /etc/os-release && echo $ID)
+DISTRO_LIKE=$(source /etc/os-release && echo $ID_LIKE)
+
+# If the distro is not directly Ubuntu or Debian, check ID_LIKE
+if [ "$DISTRO" != "ubuntu" ] && [ "$DISTRO" != "debian" ]; then
+  if [[ "$DISTRO_LIKE" == *"ubuntu"* ]]; then
+    DISTRO="ubuntu"
+  elif [[ "$DISTRO_LIKE" == *"debian"* ]]; then
+    DISTRO="debian"
+  fi
+fi
+
 sudo nala update
 sudo nala install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://download.docker.com/linux/$DISTRO/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/$DISTRO \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
