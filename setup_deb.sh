@@ -137,6 +137,18 @@ mv ytd $HOME/Applications
 echo_custom "Done setting up ytd"
 
 #########################################################
+## Setting up ufw
+#########################################################
+
+echo_custom "Setting up ufw"
+
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+echo_custom "Done setting up ufw"
+
+#########################################################
 ## Setting up battery limit threshold
 #########################################################
 
@@ -190,15 +202,3 @@ echo "sudo systemctl daemon-reload"
 echo "sudo systemctl restart battery-charge-threshold.service"
 
 echo_custom "Done setting up battery limit threshold"
-
-#########################################################
-## Setting up ufw
-#########################################################
-
-echo_custom "Setting up ufw"
-
-sudo ufw enable
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-
-echo_custom "Done setting up ufw"
