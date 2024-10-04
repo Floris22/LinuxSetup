@@ -107,7 +107,7 @@ ff() {
 
 # Aliases
 alias ls='ls --color'
-alias ytd=~/AppImages/ytd/yt.sh
+alias ytd=~/Applications/ytd/yt.sh
 
 # Exports
 EOL
