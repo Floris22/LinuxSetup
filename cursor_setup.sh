@@ -46,8 +46,8 @@ cat > "$CURSOR_DESKTOP_FILE" <<EOL
 [Desktop Entry]
 Name=Cursor
 Comment=VSCode AI editor
-Exec="$APP_DIR/$APPIMAGE_NAME"
-Icon="$APP_DIR/cursor_icon.jpg"
+Exec=$APP_DIR/$APPIMAGE_NAME
+Icon=$APP_DIR/cursor_icon.jpg
 Type=Application
 Categories=Development;
 EOL
