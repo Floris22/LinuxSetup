@@ -14,13 +14,14 @@ sudo apt upgrade -y
 
 # Install necessary dependencies
 echo_custom "Installing necessary dependencies"
-sudo apt install -y python3-virtualenv unzip curl fuse2 wget vlc ufw htop fastfetch
+sudo apt install -y nala
+sudo nala install -y python3-venv unzip curl fuse2 wget vlc ufw htop fastfetch
 
 #########################################################
 ## Install virtual machine manager
 #########################################################
 echo_custom "Installing virtual machine manager"
-sudo apt install -y qemu virt-manager virt-viewer dnsmasq bridge-utils dmidecode
+sudo nala install -y qemu virt-manager virt-viewer dnsmasq bridge-utils dmidecode
 
 # Add user to libvirt group
 sudo usermod -aG libvirt $USER
@@ -31,8 +32,8 @@ sudo usermod -aG libvirt $USER
 
 echo_custom "Installing docker"
 # Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
+sudo nala update
+sudo nala install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -44,7 +45,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo nala install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add docker to sudo group
 sudo usermod -aG docker $USER
