@@ -13,6 +13,10 @@ display_usage() {
     echo "  -b [1-20]  to apply bass boost (level 1-20)."
 }
 
+# Check what the base path is for this script
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo "Script is located in  $DIR"
+
 # Check if a YouTube link is provided
 if [ -z "$1" ]; then
     echo "Error: No YouTube link provided."
@@ -56,7 +60,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Activate virtual environment
-source ~/AppImages/ytd/.venv/bin/activate
+source "$DIR/.venv/bin/activate"
 
 # Check if the activation was successful
 if [ $? -ne 0 ]; then
@@ -65,7 +69,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run the Python script with the provided YouTube link and options
-python3 ~/AppImages/ytd/main.py "$youtube_link" $audio_option $freq_option $bass_boost_option
+python3 "$DIR/main.py" "$youtube_link" $audio_option $freq_option $bass_boost_option
 
 # Check if the Python script executed successfully
 if [ $? -ne 0 ]; then
